@@ -44,7 +44,7 @@ jobs:
       matrix:
         include:
         - language: csharp
-          build-mode: none
+          build-mode: autobuild
         - language: java-kotlin
           build-mode: none # This mode only analyzes Java. Set this to 'autobuild' or 'manual' to analyze Kotlin too.
         # CodeQL supports the following values keywords for 'language': 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift'
@@ -98,3 +98,9 @@ jobs:
       with:
         name: codeql-sarif
         path: /home/runner/work/68_question_22201511/results/java.sarif
+
+    - name: Upload SARIF file
+      uses: actions/upload-artifact@v3
+      with:
+        name: codeql-sarif
+        path: /home/runner/work/68_question_22201511/results/csharp.sarif
